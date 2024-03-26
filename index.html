@@ -33,7 +33,8 @@
                 <label>Date:<span>*</span></label>
                 <input type="datetime-local" id="Date" class="form-control"><br>
                 <button type="button" class="btn btn-primary justify-content-lg-center" onclick="save()">Save</button>
-                <button class="btn btn-primary justify-content-lg-center">View Records</button>
+                <button type="button" class="btn btn-primary justify-content-lg-center" onclick="show()">View
+                    Records</button>
             </form>
         </div>
         <br>
@@ -54,7 +55,6 @@
         </table>
     </div>
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
 
@@ -68,56 +68,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
 
-    <script>
+    <script src="Script.js"></script>
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyDEABaFA6lk_oiZ6C8ZygWWj0XwFy6d8bQ",
-            authDomain: "money-transfer-9a2d5.firebaseapp.com",
-            projectId: "money-transfer-9a2d5",
-            storageBucket: "money-transfer-9a2d5.appspot.com",
-            messagingSenderId: "24747441596",
-            appId: "1:24747441596:web:7d06d417e65a41bf68bfb9"
-        };
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-
-        function save() {
-            var sender = document.getElementById("Send_name").value
-            var reciver = document.getElementById("Recive_name").value
-            var phone = document.getElementById("Phone").value
-            var bank = document.getElementById("Bank").value
-            var account = document.getElementById("Account").value
-            var ifsc = document.getElementById("IFSC").value
-            var amount = document.getElementById("Amount").value
-            var date = document.getElementById("Date").value
-
-            if (sender != "" && reciver != "" && phone != "" && bank != "" && account != "" && ifsc != "" && amount != "" && date != "") {
-                var obj = {
-                    Sender: sender,
-                    Reciver: reciver,
-                    Phone: phone,
-                    Bank: bank,
-                    Account: account,
-                    IFSC: ifsc,
-                    Amount: amount,
-                    Date: date
-                }
-                firebase.database().ref().child("Details_Money_Transfer").push(obj)
-                document.getElementById("Send_name").value = ""
-                document.getElementById("Recive_name").value = ""
-                document.getElementById("Phone").value = ""
-                document.getElementById("Bank").value = ""
-                document.getElementById("Account").value = ""
-                document.getElementById("IFSC").value = ""
-                document.getElementById("Amount").value = ""
-                document.getElementById("Date").value = ""
-            } else {
-                alert("Fill All Mendatory Fields")
-
-            }
-        }
-    </script>
 </body>
 
 </html>
