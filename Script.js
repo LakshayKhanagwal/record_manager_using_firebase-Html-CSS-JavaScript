@@ -12,7 +12,7 @@ firebase.initializeApp(firebaseConfig);
 
 //Global Variable ID Contains ID of Record Row
 
-var ID=""
+var ID = ""
 
 function save() {
     var sender = document.getElementById("Send_name").value
@@ -159,8 +159,9 @@ function edit(editbtn) {
 
     firebase.database().ref().child("Details_Money_Transfer").child(editbtn.id).once("value", function (edit_data) {
         edit_data = edit_data.val()
-        ID=editbtn.id
-document.getElementById("update").style.display="inline"
+        ID = editbtn.id
+        document.getElementById("update").style.display = "inline"
+        document.getElementById("save").style.display = "none"
 
         document.getElementById("Send_name").value = edit_data.Sender
         document.getElementById("Recive_name").value = edit_data.Reciver
@@ -173,7 +174,7 @@ document.getElementById("update").style.display="inline"
     })
 }
 
-function Update(){
+function Update() {
     var sender = document.getElementById("Send_name").value
     var reciver = document.getElementById("Recive_name").value
     var phone = document.getElementById("Phone").value
@@ -209,7 +210,8 @@ function Update(){
         document.getElementById("IFSC").value = ""
         document.getElementById("Amount").value = ""
         document.getElementById("Date").value = ""
-        document.getElementById("update").style.display="none"
+        document.getElementById("update").style.display = "none"
+        document.getElementById("save").style.display = "inline"
 
         show()
 
