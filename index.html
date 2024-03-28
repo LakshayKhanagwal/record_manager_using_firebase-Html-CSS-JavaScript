@@ -4,65 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Record</title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<style>
-    .table-buttons{
-        margin: 2px;
-    }
-    #update{
-        display: none;
-    }
-</style>
+    <style>
+        .div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 7rem;
+        }
+
+        .div-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 1rem;
+        }
+
+        .pannel {
+            border: 2px solid rgba(66, 66, 66, 0.479);
+            border-radius: 1rem;
+            height: 20rem;
+            padding-top: 2rem;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="container">
-            <h1 class="text-center text-decoration-underline">Details...</h1>
-
-            <form>
-                <label>Sender Name:<span>*</span></label>
-                <input type="text" id="Send_name" placeholder="Enter Sender Name" class="form-control">
-                <label>Reciver Name:<span>*</span></label>
-                <input type="text" id="Recive_name" placeholder="Enter Reciver Name" class="form-control">
-                <label>Phone:<span>*</span></label>
-                <input type="number" id="Phone" placeholder="Enter Phone Number" class="form-control">
-                <label>Bank:<span>*</span></label>
-                <input type="text" id="Bank" placeholder="Enter Bank Name" class="form-control">
-                <label>Account No.:<span>*</span></label>
-                <input type="number" id="Account" placeholder="Enter Account Number" class="form-control">
-                <label>IFSC:<span>*</span></label>
-                <input type="text" id="IFSC" placeholder="Enter IFSC Code" class="form-control">
-                <label>Amount:<span>*</span></label>
-                <input type="number" id="Amount" placeholder="Enter Amount" class="form-control">
-                <label>Date:<span>*</span></label>
-                <input type="datetime-local" id="Date" class="form-control"><br>
-                <button type="button" id="save" class="btn btn-primary justify-content-lg-center" onclick="save()">Save</button>
-                <button type="button" class="btn btn-primary justify-content-lg-center" onclick="show()">View Records</button>
-                <button type="button" id="update" class="btn btn-primary justify-content-lg-center" onclick="Update()">Update</button>
+    <div class="col-12 div">
+        <div class="col-6 container pannel">
+            <h1 class="text-center text-decoration-underline">Login...</h1>
+            <form class="container">
+                <label>Username</label>
+                <input type="text" id="username" class="form-control" placeholder="Enter Username">
+                <label>Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Enter Your Password"><br>
+                <div class="div-button">
+                    <button type="button" onclick="login()" class="btn btn-primary">Login</button>
+                </div>
+                <div class="div-button">
+                    Create New account&nbsp; <a href="/pages/Signup/signup.html"> Click Here</a>
+                </div>
             </form>
         </div>
-        <br>
-        <table class="table table-bordered table-striped table-hover">
-            <thead>
-                <th>Sr. no.</th>
-                <th>Sender</th>
-                <th>Reciver</th>
-                <th>Phone</th>
-                <th>Bank Name</th>
-                <th>Account Number</th>
-                <th>IFSC Code</th>
-                <th>Amount</th>
-                <th>Date/Time</th>
-                <th>Operations</th>
-            </thead>
-            <tbody id="tbody">
-            </tbody>
-        </table>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
 
@@ -76,8 +62,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
 
-    <script src="Script.js"></script>
-
+    <script src="index.js"></script>
 </body>
 
 </html>

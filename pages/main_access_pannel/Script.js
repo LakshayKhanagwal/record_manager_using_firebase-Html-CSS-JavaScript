@@ -14,7 +14,7 @@ firebase.initializeApp(firebaseConfig);
 
 var ID = ""
 
-function save() {
+function add_customer() {
     var sender = document.getElementById("Send_name").value
     var reciver = document.getElementById("Recive_name").value
     var phone = document.getElementById("Phone").value
@@ -78,6 +78,7 @@ function show() {
             document.getElementById("tbody").innerHTML = ""
 
             array.map(function (key, index) {
+                console.log(obj[key]);
                 Table(obj[key].Sender, obj[key].Reciver, obj[key].Phone, obj[key].Bank, obj[key].Account, obj[key].IFSC, obj[key].Amount, obj[key].Date, index, key)
             })
         }
@@ -219,3 +220,19 @@ function Update() {
         alert("Fill All Mendatory Fields")
     }
 }
+
+
+
+// for prevent arrow key to increase number in ijnput field
+
+document.addEventListener('DOMContentLoaded', function () {
+    var numberInputs = document.querySelectorAll('input[type="number"]');
+    numberInputs.forEach(function (input) {
+        input.addEventListener('keydown', function (e) {
+            // Prevent arrow keys from changing the value
+            if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+                e.preventDefault();
+            }
+        });
+    });
+});
