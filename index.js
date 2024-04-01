@@ -30,7 +30,8 @@ function login() {
 
                 if (username == obj[key].Username && password == obj[key].Password) {
                     alert("login Successfull")
-                    window.location.href = "/pages/main_access_pannel/index.html"
+                    localStorage.setItem("u_name",username)
+                    window.location.href = "/pages/home-page/Home-page.html"
                     found = true
                 } else {
                     alert("Invalid Credential")
