@@ -1,6 +1,11 @@
 function logout() {
     localStorage.clear()
     window.location.href="../../index.html"
+
+    history.pushState(null, document.title, location.href);
+    window.addEventListener('popstate', function() {
+        history.pushState(null, document.title, location.href);
+    });
 }
 load()
 function load() {
