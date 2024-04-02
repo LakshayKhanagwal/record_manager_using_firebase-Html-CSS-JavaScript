@@ -1,10 +1,10 @@
 function logout() {
     localStorage.clear()
     window.location.href = "../../index.html"
+    window.history.clear()
 }
 load()
 function load() {
-    window.location.reload()
     var u_name = localStorage.getItem("u_name")
     if (u_name == null) {
         window.location.href = "../../index.html"

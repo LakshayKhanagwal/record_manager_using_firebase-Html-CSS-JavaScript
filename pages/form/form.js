@@ -13,7 +13,6 @@ firebase.initializeApp(firebaseConfig);
 
 verify()
 function verify() {
-    window.location.reload()
     var u_name = localStorage.getItem("u_name")
     if (u_name == null) {
         window.location.href = "../../index.html"
