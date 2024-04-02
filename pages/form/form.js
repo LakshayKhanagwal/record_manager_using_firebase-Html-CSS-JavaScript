@@ -25,8 +25,8 @@ function back(){
 }
 
 function logout() {
-    window.location.href = "../../index.html"
     localStorage.clear()
+    window.location.href = "../../index.html"
 }
 
 function save() {
