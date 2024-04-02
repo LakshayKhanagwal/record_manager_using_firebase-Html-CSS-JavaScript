@@ -16,7 +16,7 @@ async function onload() {
     u_name = localStorage.getItem("u_name")
     if (u_name != null) {
         await window.open("pages/home-page/Home-page.html")
-        // window.close();
+        window.close();
     }
 }
 
