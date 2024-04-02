@@ -26,6 +26,7 @@ function back(){
 
 function logout() {
     localStorage.clear()
+    window.location.reload()
     history.pushState(null, location.href="../../index.html");
 }
 

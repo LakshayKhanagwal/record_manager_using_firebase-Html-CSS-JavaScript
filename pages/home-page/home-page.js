@@ -9,6 +9,6 @@ function load() {
         window.location.href = "../../index.html"
         return
     }
-
+document.getElementsByTagName("title").innerHTML=u_name
     document.getElementById("heading").innerHTML = `Hi ${u_name}, What Is our Task Today`
 }
