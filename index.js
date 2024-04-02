@@ -11,6 +11,13 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+async function onload() {
+    if (localStorage.getItem("u_name") != null) {
+        await window.open("pages/home-page/Home-page.html")
+        window.close();
+    }
+}
+
 function login() {
     var username = document.getElementById("username").value
     var password = document.getElementById("password").value
@@ -30,7 +37,7 @@ function login() {
 
                 if (username == obj[key].Username && password == obj[key].Password) {
                     alert("login Successfull")
-                    localStorage.setItem("u_name",username)
+                    localStorage.setItem("u_name", username)
                     window.location.href = "/pages/home-page/Home-page.html"
                     found = true
                 } else {
