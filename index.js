@@ -11,6 +11,10 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+// clearing Back History
+
+history.pushState(null, document.title);
+
 function login() {
     var username = document.getElementById("username").value
     var password = document.getElementById("password").value
