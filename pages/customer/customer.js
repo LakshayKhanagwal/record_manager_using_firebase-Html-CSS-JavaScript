@@ -26,8 +26,7 @@ function back(){
 
 function logout() {
     localStorage.clear()
-    window.location.reload()
-    history.pushState(null, location.href="../../index.html");
+    window.location.href="../../index.html"
 }
 
 function Add_customer(){

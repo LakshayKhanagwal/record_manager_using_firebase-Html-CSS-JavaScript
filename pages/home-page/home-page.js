@@ -1,6 +1,6 @@
 function logout() {
     localStorage.clear()
-    history.pushState(null, location.href="../../index.html");
+    window.location.href="../../index.html"
 }
 load()
 function load() {
