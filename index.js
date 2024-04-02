@@ -11,6 +11,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+onload()
 async function onload() {
     if (localStorage.getItem("u_name") != null) {
         await window.open("pages/home-page/Home-page.html")
