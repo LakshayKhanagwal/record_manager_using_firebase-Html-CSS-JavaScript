@@ -1,6 +1,7 @@
-function logout() {
+async function logout() {
     localStorage.clear()
-    window.location.href="../../index.html"
+    await window.open("../../index.html")
+    window.close();
 }
 load()
 function load() {
@@ -9,6 +10,6 @@ function load() {
         window.location.href = "../../index.html"
         return
     }
-document.getElementsByTagName("title").innerHTML=u_name
+    document.getElementsByTagName("title").innerHTML = u_name
     document.getElementById("heading").innerHTML = `Hi ${u_name}, What Is our Task Today`
 }
