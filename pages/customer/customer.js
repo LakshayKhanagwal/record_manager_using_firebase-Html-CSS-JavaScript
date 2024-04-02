@@ -20,44 +20,45 @@ function verify() {
     }
 }
 
-function back(){
-    window.location.href="../home-page/Home-page.html"
+function back() {
+    window.location.href = "../home-page/Home-page.html"
 }
 
-function logout() {
+async function logout() {
     localStorage.clear()
-    window.location.href="../../index.html"
+    await window.open("../../index.html")
+    window.close();
 }
 
-function Add_customer(){
-  var sender=  document.getElementById("sender").value
-  var reciver=  document.getElementById("reciver").value
-  var phone=  document.getElementById("phone").value
-  var bank=  document.getElementById("bank").value
-  var account=  document.getElementById("account").value
-  var ifsc=  document.getElementById("ifsc").value
+function Add_customer() {
+    var sender = document.getElementById("sender").value
+    var reciver = document.getElementById("reciver").value
+    var phone = document.getElementById("phone").value
+    var bank = document.getElementById("bank").value
+    var account = document.getElementById("account").value
+    var ifsc = document.getElementById("ifsc").value
 
-  if (sender!="" && reciver!="" && phone!="" && bank!="" && account!="" && ifsc!="") {
+    if (sender != "" && reciver != "" && phone != "" && bank != "" && account != "" && ifsc != "") {
 
-    var obj ={
-        Sender:sender,
-        Reciver:reciver,
-        Phone:phone,
-        Bank: bank,
-        Account:account,
-        IFCS:ifsc
+        var obj = {
+            Sender: sender,
+            Reciver: reciver,
+            Phone: phone,
+            Bank: bank,
+            Account: account,
+            IFCS: ifsc
+        }
+        var username = localStorage.getItem("u_name")
+        firebase.database().ref().child("customer").child(username).child(sender).child("details").push(obj, err => {
+            if (err) {
+                alert("Error Occured")
+            } else {
+                alert("Customer Added Successfully")
+            }
+        })
+    } else {
+        alert("All Fields Are Mandatory")
     }
-    var username=localStorage.getItem("u_name")
-    firebase.database().ref().child("customer").child(username).child(sender).child("details").push(obj,err=>{
-if (err) {
-    alert("Error Occured")
-} else {
-    alert("Customer Added Successfully")
-}
-    })
-  } else {
-    alert("All Fields Are Mandatory")
-  }
 }
 
 

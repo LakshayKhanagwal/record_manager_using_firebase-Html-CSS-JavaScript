@@ -20,13 +20,14 @@ function verify() {
     }
 }
 
-function back(){
-    window.location.href="../home-page/Home-page.html"
+function back() {
+    window.location.href = "../home-page/Home-page.html"
 }
 
-function logout() {
+async function logout() {
     localStorage.clear()
-    window.location.href="../../index.html"
+    await window.open("../../index.html")
+    window.close();
 }
 
 function save() {
