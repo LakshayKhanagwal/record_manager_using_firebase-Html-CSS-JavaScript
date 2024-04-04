@@ -90,7 +90,7 @@ function signup() {
                 alert("password didn't Match")
             }
         } else {
-            alert("All Fields are Mendatory")
+            alert("All Fields are Mandatory")
         }
     }).catch(function (error) {
         // Handle errors from validation

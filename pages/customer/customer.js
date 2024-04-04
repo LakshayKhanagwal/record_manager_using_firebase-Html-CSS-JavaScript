@@ -61,6 +61,71 @@ function Add_customer() {
     }
 }
 
+function add_money() {
+    var div_main = document.createElement("div")
+    div_main.className = "amount position-absolute top-0 d-flex justify-content-center align-items-center"
+
+    var div_form = document.createElement("div")
+    div_form.className = "bg-white pe-5 pt-3 pb-1 ps-5 rounded-4"
+    div_main.append(div_form)
+
+    var heading = document.createElement("h1")
+    heading.className = "text-center text-decoration-underline opacity-75"
+    heading.innerHTML = "Add Amount"
+    div_form.append(heading)
+
+    var form_pannel=document.createElement("form")
+    form_pannel.className="mb-3"
+    div_form.append(form_pannel)
+
+    var lab_phone=document.createElement("label")
+    lab_phone.innerHTML="Phone No."
+
+    var span_phone=document.createElement("span")
+    span_phone.innerHTML="*"
+    lab_phone.append(span_phone)
+
+    form_pannel.append(lab_phone)
+
+    var inp_phone=document.createElement("input")
+    inp_phone.type="number"
+    inp_phone.className="form-control"
+    inp_phone.placeholder="Enter Phone Number"
+    form_pannel.append(inp_phone)
+
+    var lab_amount=document.createElement("label")
+    lab_amount.innerHTML="Amount"
+
+    var span_amount=document.createElement("span")
+    span_amount.innerHTML="*"
+    lab_amount.append(span_amount)
+
+    form_pannel.append(lab_amount)
+
+    var inp_amount=document.createElement("input")
+    inp_amount.type="text"
+    inp_amount.className="form-control"
+    inp_amount.placeholder="Enter Amount"
+    form_pannel.append(inp_amount)
+
+    var div_button=document.createElement("div")
+    div_button.className="text-center"
+
+    var button_add=document.createElement("button")
+    button_add.className="btn btn-primary mt-2 me-1"
+    button_add.innerHTML="Add"
+    div_button.append(button_add)
+
+    var button_close=document.createElement("button")
+    button_close.className="btn btn-primary mt-2"
+    button_close.innerHTML="Close"
+    div_button.append(button_close)
+
+    form_pannel.append(div_button)
+
+    document.getElementById("money").append(div_main)
+}
+
 
 
 
