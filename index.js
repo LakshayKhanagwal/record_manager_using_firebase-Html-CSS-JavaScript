@@ -17,6 +17,9 @@ async function onload() {
     if (u_name != null) {
         await window.open("pages/home-page/Home-page.html")
         window.close();
+    }else{
+        await window.open("index.html")
+        window.close();
     }
 }
 
