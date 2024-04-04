@@ -17,7 +17,9 @@ async function onload() {
     if (u_name != null) {
         await window.open("pages/home-page/Home-page.html")
         window.close();
-    }else{
+
+    }else if (u_name==null && localStorage.getItem("count")==null) {
+        localStorage.setItem("count","1")
         await window.open("index.html")
         window.close();
     }
