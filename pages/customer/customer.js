@@ -126,10 +126,6 @@ function add_money() {
     document.getElementById("money").append(div_main)
 }
 
-
-
-
-
 // for prevent arrow key to increase number in ijnput field
 
 document.addEventListener('DOMContentLoaded', function () {
