@@ -8,11 +8,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-
         .amount {
             background-color: rgba(128, 128, 128, 0.295);
             height: 100%;
             width: 100%;
+        }
+
+        /* Apply styles only for screens smaller than 600px wide */
+        @media screen and (max-width: 600px) {
+            .table_scroll {
+                overflow-x: scroll;
+                /* Hide the element */
+            }
         }
 
         input[type="number"]::-webkit-inner-spin-button,
@@ -77,32 +84,38 @@
             </div>
         </form>
     </div>
-<div id="money"></div>
+    <div id="money"></div>
     </div>
 
     <div id="record_output">
         <div class="container mt-3 p-0 border border-2 rounded-2">
             <div class="border p-1 pt-2 pb-0 border-2 border-black d-flex rounded-2 justify-content-between">
-                <div><p>piku</p></div>
                 <div>
-                <button class="btn btn-primary rounded-5 pt-0 text-center align-content-center">a</button></div>
+                    <p>piku</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary rounded-5 pt-0 text-center align-content-center">a</button>
+                </div>
             </div>
-            <table class="table table-striped-columns">
-                <thead>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="align-content-center">reciver-ram</td>
-                        <td class="align-content-center">phone</td>
-                        <td class="align-content-center">bank</td>
-                        <td class="align-content-center">account</td>
-                        <td class="align-content-center">ifsc</td>
-                        <td class="align-content-center">amount</td>
-                        <td class="align-content-center"><button class="btn btn-primary">add</button> <br> 
-                            <button class="btn btn-danger">delete</button></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table_scroll">
+                <table class="table table-striped-columns">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="align-content-center">reciver-ram</td>
+                            <td class="align-content-center">phone</td>
+                            <td class="align-content-center">bank</td>
+                            <td class="align-content-center">account</td>
+                            <td class="align-content-center">ifsc</td>
+                            <td class="align-content-center">amount</td>
+                            <td class="align-content-center"><button class="btn btn-primary">add</button> <br>
+                                <button class="btn btn-danger">delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
