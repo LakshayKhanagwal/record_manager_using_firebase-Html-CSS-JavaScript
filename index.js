@@ -18,8 +18,8 @@ async function onload() {
         await window.open("pages/home-page/Home-page.html")
         window.close();
 
-    }else if (u_name==null && localStorage.getItem("count")==null) {
-        localStorage.setItem("count","1")
+    } else if (u_name == null && localStorage.getItem("count") == null) {
+        localStorage.setItem("count", "1")
         await window.open("index.html")
         window.close();
     }
@@ -29,31 +29,48 @@ function login() {
     var username = document.getElementById("username").value
     var password = document.getElementById("password").value
 
-    firebase.database().ref().child("login").child(username).once("value", function (u_name) {
+    if (username == "" && password == "") {
+        alert("UserName and Can't be empty")
+    } else {
 
-        if (u_name.val() != null) {
+        //loading Screen
 
-            var obj = u_name.val()
-            array = Object.keys(obj)
-            var found = false;
+        var div_loading = document.createElement("div")
+        div_loading.className = "amount position-absolute top-0 d-flex justify-content-center align-items-center"
+        div_loading.setAttribute("id", "loading")
+        div_loading.innerHTML = "Loading"
+        document.getElementById("loading_screen").append(div_loading)
 
-            array.map(function (key) {
-                if (found) {
-                    return;
-                }
+        //Done Loading Screen
 
-                if (username == obj[key].Username && password == obj[key].Password) {
-                    alert("login Successfull")
-                    localStorage.setItem("u_name", username)
-                    window.open(location.href = "/pages/home-page/Home-page.html")
-                    window.close()
-                    found = true
-                } else {
-                    alert("Invalid Credential")
-                }
-            })
-        } else {
-            alert("User Not Found")
-        }
-    })
+        firebase.database().ref().child("login").child(username).once("value", function (u_name) {
+
+            if (u_name.val() != null) {
+
+                var obj = u_name.val()
+                array = Object.keys(obj)
+                var found = false;
+
+                array.map(function (key) {
+                    if (found) {
+                        return;
+                    }
+
+                    if (username == obj[key].Username && password == obj[key].Password) {
+                        alert("login Successfull")
+                        localStorage.setItem("u_name", username)
+                        window.open(location.href = "/pages/home-page/Home-page.html")
+                        window.close()
+                        found = true
+                    } else {
+                        alert("Invalid Credential")
+                        document.getElementById("loading").remove()
+                        // console.log("lll");
+                    }
+                })
+            } else {
+                alert("User Not Found")
+            }
+        })
+    }
 }
