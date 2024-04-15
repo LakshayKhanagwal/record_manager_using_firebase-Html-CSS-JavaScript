@@ -78,3 +78,22 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function show(){
+    window.open('test.html')
+}
