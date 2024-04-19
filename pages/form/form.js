@@ -57,6 +57,7 @@ function save() {
             } else {
                 alert("Data Saved Successfully")
                 window.location.reload()
+                show()
             }
         })
 
@@ -64,7 +65,6 @@ function save() {
         alert("All Fields Are Mandatory")
     }
 }
-
 function show() {
     var username = localStorage.getItem("u_name")
     firebase.database().ref().child("form").child(username).once("value", function (form) {
