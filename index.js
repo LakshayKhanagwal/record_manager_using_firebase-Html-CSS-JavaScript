@@ -70,6 +70,7 @@ function login() {
                 })
             } else {
                 alert("User Not Found")
+                document.getElementById("loading").remove()
             }
         })
     }

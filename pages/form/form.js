@@ -31,6 +31,7 @@ async function logout() {
 }
 
 function save() {
+
     var name = document.getElementById("name").value
     var phone = document.getElementById("phone").value
     var form = document.getElementById("form-name").value
@@ -56,33 +57,45 @@ function save() {
                 alert("Error Occured")
             } else {
                 alert("Data Saved Successfully")
-                window.location.reload()
-                show()
+                document.getElementById("name").value=""
+                document.getElementById("phone").value=""
+                document.getElementById("form-name").value=""
+                document.getElementById("form-fees").value=""
+                document.getElementById("our-fees").value=""
+                document.getElementById("date").value=""
+                document.getElementById("payment-mode").value=""
             }
         })
-
     } else {
         alert("All Fields Are Mandatory")
     }
+    show()
 }
+
 function show() {
     var username = localStorage.getItem("u_name")
+
+    document.getElementById("record_cards").innerHTML = ""
+
     firebase.database().ref().child("form").child(username).once("value", function (form) {
-
         var obj = form.val()
-        Arr = Object.keys(obj)
-
-        Arr.map(function (keys) {
-            Table(obj[keys].Name, obj[keys].Form, obj[keys].Form_fees, obj[keys].Our_fees, obj[keys].Payment_mode, obj[keys].Phone, obj[keys].Date)
-        })
-
+        if (obj != null) {
+            Arr = Object.keys(obj)
+            Arr.map(function (keys, index) {
+                Table(obj[keys].Name, obj[keys].Form, obj[keys].Form_fees, obj[keys].Our_fees, obj[keys].Payment_mode, obj[keys].Phone, obj[keys].Date, keys, index)
+            })
+        } else {
+            alert("No Record Found")
+        }
 
     })
 }
-function Table(name, form, form_fees, our_fees, payment_mode, phone, date) {
+
+function Table(name, form, form_fees, our_fees, payment_mode, phone, date, keys, index) {
 
     var card = document.createElement("div")
     card.className = "col-lg-3 col-10 div p-0 rounded-3 overflow-hidden"
+    card.setAttribute("id", index)
 
     var name_div = document.createElement("div")
     name_div.className = "col-12 bg-primary-subtle pt-2 text-muted rounded-top-3 align-content-center text-center"
@@ -129,9 +142,9 @@ function Table(name, form, form_fees, our_fees, payment_mode, phone, date) {
 
     tbody.append(row2)
 
-//row3
+    //row3
 
-row3 = document.createElement("tr")
+    row3 = document.createElement("tr")
     row3_cell1 = document.createElement("td")
     row3_cell1.innerHTML = "Our Fees:"
     row3.append(row3_cell1)
@@ -183,24 +196,27 @@ row3 = document.createElement("tr")
 
     //row7
 
-    row7=document.createElement("tr")
-    row7_cell1_button=document.createElement("td")
-    row7_cell1_button.colSpan="2"
-    row7_cell1_button.className="text-end text-dark pe-5"
+    row7 = document.createElement("tr")
+    row7_cell1_button = document.createElement("td")
+    row7_cell1_button.colSpan = "2"
+    row7_cell1_button.className = "text-end text-dark pe-5"
 
     //edit button
 
-    var edit_button=document.createElement("button")
-    edit_button.className="btn btn-warning me-1"
-    edit_button.innerHTML="Edit"
+    var edit_button = document.createElement("button")
+    edit_button.className = "btn btn-warning me-1"
+    edit_button.innerHTML = "Edit"
+    edit_button.setAttribute("onclick", `edit(this)`)
 
     row7_cell1_button.append(edit_button)
-    
+
     //delete button
 
-    var delete_button=document.createElement("button")
-    delete_button.className="btn btn-danger"
-    delete_button.innerHTML="Delete"
+    var delete_button = document.createElement("button")
+    delete_button.className = "btn btn-danger"
+    delete_button.innerHTML = "Delete"
+    delete_button.setAttribute("id", keys)
+    delete_button.setAttribute("onclick", `del(this)`)
 
     row7_cell1_button.append(delete_button)
 
@@ -217,6 +233,24 @@ row3 = document.createElement("tr")
     document.getElementById("record_cards").append(card)
 }
 
+function del(keys) {
+    var username = localStorage.getItem("u_name")
+
+    confirm("This action Can't be Undo. Are you Sure, You Want To delete this Record?")
+
+    firebase.database().ref().child("form").child(username).child(keys.id).remove(err => {
+        if (err) {
+            alert("Error occured")
+        } else {
+            alert("deletation Successfull")
+            show()
+        }
+    })
+}
+
+function edit(e){
+console.log(e.parentNode.parentNode.parentNode);
+}
 
 // for prevent arrow key to increase number in ijnput field
 
