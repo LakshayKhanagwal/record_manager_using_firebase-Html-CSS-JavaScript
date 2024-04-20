@@ -32,7 +32,6 @@
         }
 
         .pannel {
-            height: 20rem;
             padding-top: 2rem;
         }
     </style>
@@ -40,17 +39,18 @@
 
 <body>
     <div class="col-12 div">
-        <div class="col-lg-5 col-9 container border border-3 rounded-3 pannel">
+        <div class="col-lg-5 col-9 container border border-3 rounded-3 pb-0 pannel">
             <h1 class="text-center text-decoration-underline">Login...</h1>
             <form class="container">
                 <label>Username</label>
-                <input type="text" id="username" class="form-control" placeholder="Enter Username">
+                <input type="text" id="username" onkeydown="return preventSpace(event)" class="form-control" placeholder="Enter Username">
+                <h6 id="username_space_alert"></h6>
                 <label>Password</label>
                 <input type="password" id="password" class="form-control" placeholder="Enter Your Password"><br>
                 <div class="div-button">
                     <button type="button" onclick="login()" class="btn btn-primary">Login</button>
                 </div>
-                <div class="div-button">
+                <div class="div-button mb-0 pb-1">
                     Create New account&nbsp; <a href="/pages/Signup/signup.html"> Click Here</a>
                 </div>
             </form>

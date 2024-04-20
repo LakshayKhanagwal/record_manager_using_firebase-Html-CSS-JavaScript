@@ -111,3 +111,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+//prevent space in username 
+//32 is the key code of space button
+
+// window.onload = function () {
+//     document.getElementById("username").oninput = function (e) {
+        
+//         if (e.data == " ") {
+//             return false;
+//         }
+//     }
+// };
+
+function preventSpace(event) {
+    document.getElementById("username_space_alert").innerHTML=""
+    if (event.keyCode === 32) {
+        event.preventDefault();
+        document.getElementById("username_space_alert").innerHTML="Space not Allowed"
+    }
+}
