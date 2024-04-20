@@ -57,13 +57,13 @@ function save() {
                 alert("Error Occured")
             } else {
                 alert("Data Saved Successfully")
-                document.getElementById("name").value=""
-                document.getElementById("phone").value=""
-                document.getElementById("form-name").value=""
-                document.getElementById("form-fees").value=""
-                document.getElementById("our-fees").value=""
-                document.getElementById("date").value=""
-                document.getElementById("payment-mode").value=""
+                document.getElementById("name").value = ""
+                document.getElementById("phone").value = ""
+                document.getElementById("form-name").value = ""
+                document.getElementById("form-fees").value = ""
+                document.getElementById("our-fees").value = ""
+                document.getElementById("date").value = ""
+                document.getElementById("payment-mode").value = ""
             }
         })
     } else {
@@ -95,7 +95,6 @@ function Table(name, form, form_fees, our_fees, payment_mode, phone, date, keys,
 
     var card = document.createElement("div")
     card.className = "col-lg-3 col-10 div p-0 rounded-3 overflow-hidden"
-    card.setAttribute("id", index)
 
     var name_div = document.createElement("div")
     name_div.className = "col-12 bg-primary-subtle pt-2 text-muted rounded-top-3 align-content-center text-center"
@@ -206,6 +205,7 @@ function Table(name, form, form_fees, our_fees, payment_mode, phone, date, keys,
     var edit_button = document.createElement("button")
     edit_button.className = "btn btn-warning me-1"
     edit_button.innerHTML = "Edit"
+    edit_button.setAttribute("name", keys)
     edit_button.setAttribute("onclick", `edit(this)`)
 
     row7_cell1_button.append(edit_button)
@@ -248,8 +248,66 @@ function del(keys) {
     })
 }
 
-function edit(e){
-console.log(e.parentNode.parentNode.parentNode);
+function edit(edit_button) {
+    var username = localStorage.getItem("u_name")
+    firebase.database().ref().child("form").child(username).child(edit_button.name).once("value", function (data) {
+
+        document.getElementById("name").value = data.val().Name
+        document.getElementById("phone").value = data.val().Phone
+        document.getElementById("form-name").value = data.val().Form
+        document.getElementById("form-fees").value = data.val().Form_fees
+        document.getElementById("our-fees").value = data.val().Our_fees
+        document.getElementById("date").value = data.val().Date
+        document.getElementById("payment-mode").value = data.val().Payment_mode
+
+        document.getElementById("save").style.display = "none"
+        document.getElementById("update").style.display = "inline"
+        document.getElementById("update").setAttribute("name", edit_button.name)
+    })
+}
+
+function Update(keys) {
+    var name = document.getElementById("name").value
+    var phone = document.getElementById("phone").value
+    var form = document.getElementById("form-name").value
+    var form_fees = document.getElementById("form-fees").value
+    var our_fees = document.getElementById("our-fees").value
+    var date = document.getElementById("date").value
+    var payment_mode = document.getElementById("payment-mode").value
+
+    if (name != "" && phone != "" && form != "" && form_fees != "" && our_fees != "" && date != "" && payment_mode != "") {
+        var obj = {
+            Name: name,
+            Phone: phone,
+            Form: form,
+            Form_fees: form_fees,
+            Our_fees: our_fees,
+            Date: date,
+            Payment_mode: payment_mode
+        }
+        var username = localStorage.getItem("u_name")
+
+        firebase.database().ref().child("form").child(username).child(keys.name).set(obj, err => {
+            if (err) {
+                alert("Error Occured")
+            } else {
+                alert("Data Saved Successfully")
+                document.getElementById("name").value = ""
+                document.getElementById("phone").value = ""
+                document.getElementById("form-name").value = ""
+                document.getElementById("form-fees").value = ""
+                document.getElementById("our-fees").value = ""
+                document.getElementById("date").value = ""
+                document.getElementById("payment-mode").value = ""
+                
+                document.getElementById("save").style.display = "inline"
+                document.getElementById("update").style.display = "none"
+            }
+        })
+    } else {
+        alert("All Fields Are Mandatory")
+    }
+    show()
 }
 
 // for prevent arrow key to increase number in ijnput field

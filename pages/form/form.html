@@ -20,6 +20,10 @@
             height: 22.7rem;
         }
 
+        #update{
+            display: none;
+        }
+
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
             -webkit-appearance: none;
@@ -86,7 +90,8 @@
                 </div>
             </div>
             <div class="div-button">
-                <button type="button" onclick="save()" class="btn btn-primary">Save</button>
+                <button type="button" onclick="Update(this)" id="update" class="btn btn-primary">Update</button>
+                <button type="button" onclick="save()" id="save" class="btn btn-primary">Save</button>
                 <button type="button" onclick="show()" class="btn btn-primary m-1">Show</button>
             </div>
         </form>
