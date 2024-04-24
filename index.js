@@ -80,14 +80,14 @@ function login() {
 //prevent space in username 
 //32 is the key code of space button
 
-// window.onload = function () {
-//     document.getElementById("username").oninput = function (e) {
+window.onload = function () {
+    document.getElementById("username").oninput = function (e) {
 
-//         if (e.data == " ") {
-//             return false;
-//         }
-//     }
-// };
+        if (e.data == " ") {
+            return false;
+        }
+    }
+};
 
 function preventSpace(event) {
     document.getElementById("username_space_alert").innerHTML = ""
