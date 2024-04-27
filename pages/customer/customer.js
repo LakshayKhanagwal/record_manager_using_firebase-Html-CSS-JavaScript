@@ -74,56 +74,117 @@ function add_money() {
     heading.innerHTML = "Add Amount"
     div_form.append(heading)
 
-    var form_pannel=document.createElement("form")
-    form_pannel.className="mb-3"
+    var form_pannel = document.createElement("form")
+    form_pannel.className = "mb-3"
     div_form.append(form_pannel)
 
-    var lab_phone=document.createElement("label")
-    lab_phone.innerHTML="Phone No."
+    var lab_phone = document.createElement("label")
+    lab_phone.innerHTML = "Phone No."
 
-    var span_phone=document.createElement("span")
-    span_phone.innerHTML="*"
+    var span_phone = document.createElement("span")
+    span_phone.innerHTML = "*"
     lab_phone.append(span_phone)
 
     form_pannel.append(lab_phone)
 
-    var inp_phone=document.createElement("input")
-    inp_phone.type="number"
-    inp_phone.className="form-control"
-    inp_phone.placeholder="Enter Phone Number"
+    var inp_phone = document.createElement("input")
+    inp_phone.type = "number"
+    inp_phone.className = "form-control"
+    inp_phone.placeholder = "Enter Phone Number"
     form_pannel.append(inp_phone)
 
-    var lab_amount=document.createElement("label")
-    lab_amount.innerHTML="Amount"
+    var lab_amount = document.createElement("label")
+    lab_amount.innerHTML = "Amount"
 
-    var span_amount=document.createElement("span")
-    span_amount.innerHTML="*"
+    var span_amount = document.createElement("span")
+    span_amount.innerHTML = "*"
     lab_amount.append(span_amount)
 
     form_pannel.append(lab_amount)
 
-    var inp_amount=document.createElement("input")
-    inp_amount.type="text"
-    inp_amount.className="form-control"
-    inp_amount.placeholder="Enter Amount"
+    var inp_amount = document.createElement("input")
+    inp_amount.type = "text"
+    inp_amount.className = "form-control"
+    inp_amount.placeholder = "Enter Amount"
     form_pannel.append(inp_amount)
 
-    var div_button=document.createElement("div")
-    div_button.className="text-center"
+    var div_button = document.createElement("div")
+    div_button.className = "text-center"
 
-    var button_add=document.createElement("button")
-    button_add.className="btn btn-primary mt-2 me-1"
-    button_add.innerHTML="Add"
+    var button_add = document.createElement("button")
+    button_add.className = "btn btn-primary mt-2 me-1"
+    button_add.innerHTML = "Add"
     div_button.append(button_add)
 
-    var button_close=document.createElement("button")
-    button_close.className="btn btn-primary mt-2"
-    button_close.innerHTML="Close"
+    var button_close = document.createElement("button")
+    button_close.className = "btn btn-primary mt-2"
+    button_close.innerHTML = "Close"
     div_button.append(button_close)
 
     form_pannel.append(div_button)
 
     document.getElementById("money").append(div_main)
+}
+
+show()
+function show() {
+    var username = localStorage.getItem("u_name")
+    firebase.database().ref().child("customer").child(username).once("value", function (customer) {
+        var obj_customer = customer.val()
+        var array = Object.keys(obj_customer)
+
+        array.map(function (customer_keys) {
+            var customer_key_details = obj_customer[customer_keys].details
+            var arr = Object.keys(customer_key_details)
+            arr.map(function (customer_details) {
+                Table(customer_key_details[customer_details].Sender, customer_key_details[customer_details].Phone, customer_key_details[customer_details].Account)
+            })
+        })
+    })
+}
+
+function Table(name, phone, account) {
+var div_record = document.createElement("div")
+div_record.className="border border-1 container col-11 rounded-2 d-flex justify-content-between align-items-center pt-3 ps-4 pe-4 mb-1 bg-body-secondary"
+
+var table_record=document.createElement("table")
+table_record.className="table table-striped-columns w-100 rounded-5"
+
+var tbody = document.createElement("tbody")
+table_record.append(tbody)
+
+var row = document.createElement("tr")
+tbody.append(row)
+
+var cell_name=document.createElement("td")
+cell_name.className="w-25 align-content-center"
+cell_name.innerHTML=`Name:${name}`
+row.append(cell_name)
+
+var cell_phone=document.createElement("td")
+cell_phone.className="w-25 align-content-center"
+cell_phone.innerHTML=`Phone:${phone}`
+row.append(cell_phone)
+
+var cell_account=document.createElement("td")
+cell_account.className="w-25 align-content-center"
+cell_account.innerHTML=`Account:${account}`
+row.append(cell_account)
+
+var cell_button=document.createElement("td")
+cell_button.className="w-25 text-center"
+
+var button_view_record=document.createElement("button")
+button_view_record.className="btn btn-warning"
+button_view_record.innerHTML="View Record"
+
+cell_button.append(button_view_record)
+
+row.append(cell_button)
+
+div_record.append(table_record)
+
+document.getElementById("record_output").append(div_record)
 }
 
 // for prevent arrow key to increase number in ijnput field
