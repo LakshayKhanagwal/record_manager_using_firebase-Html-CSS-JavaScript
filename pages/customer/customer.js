@@ -144,47 +144,47 @@ function show() {
 }
 
 function Table(name, phone, account) {
-var div_record = document.createElement("div")
-div_record.className="border border-1 container col-11 rounded-2 d-flex justify-content-between align-items-center pt-3 ps-4 pe-4 mb-1 bg-body-secondary"
+    var div_record = document.createElement("div")
+    div_record.className = "border border-1 container col-11 rounded-2 d-flex justify-content-between align-items-center pt-3 ps-4 pe-4 mb-1 bg-body-secondary"
 
-var table_record=document.createElement("table")
-table_record.className="table table-striped-columns w-100 rounded-5"
+    var table_record = document.createElement("table")
+    table_record.className = "table table-striped-columns w-100 rounded-5"
 
-var tbody = document.createElement("tbody")
-table_record.append(tbody)
+    var tbody = document.createElement("tbody")
+    table_record.append(tbody)
 
-var row = document.createElement("tr")
-tbody.append(row)
+    var row = document.createElement("tr")
+    tbody.append(row)
 
-var cell_name=document.createElement("td")
-cell_name.className="w-25 align-content-center"
-cell_name.innerHTML=`Name:${name}`
-row.append(cell_name)
+    var cell_name = document.createElement("td")
+    cell_name.className = "w-25 align-content-center"
+    cell_name.innerHTML = `Name:${name}`
+    row.append(cell_name)
 
-var cell_phone=document.createElement("td")
-cell_phone.className="w-25 align-content-center"
-cell_phone.innerHTML=`Phone:${phone}`
-row.append(cell_phone)
+    var cell_phone = document.createElement("td")
+    cell_phone.className = "w-25 align-content-center"
+    cell_phone.innerHTML = `Phone:${phone}`
+    row.append(cell_phone)
 
-var cell_account=document.createElement("td")
-cell_account.className="w-25 align-content-center"
-cell_account.innerHTML=`Account:${account}`
-row.append(cell_account)
+    var cell_account = document.createElement("td")
+    cell_account.className = "w-25 align-content-center"
+    cell_account.innerHTML = `Account:${account}`
+    row.append(cell_account)
 
-var cell_button=document.createElement("td")
-cell_button.className="w-25 text-center"
+    var cell_button = document.createElement("td")
+    cell_button.className = "w-25 text-center"
 
-var button_view_record=document.createElement("button")
-button_view_record.className="btn btn-warning"
-button_view_record.innerHTML="View Record"
+    var button_view_record = document.createElement("button")
+    button_view_record.className = "btn btn-warning"
+    button_view_record.innerHTML = "View Record"
 
-cell_button.append(button_view_record)
+    cell_button.append(button_view_record)
 
-row.append(cell_button)
+    row.append(cell_button)
 
-div_record.append(table_record)
+    div_record.append(table_record)
 
-document.getElementById("record_output").append(div_record)
+    document.getElementById("record_output").append(div_record)
 }
 
 // for prevent arrow key to increase number in ijnput field
