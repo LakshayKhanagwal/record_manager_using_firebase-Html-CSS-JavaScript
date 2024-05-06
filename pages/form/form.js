@@ -30,7 +30,7 @@ async function logout() {
     window.close();
 }
 
-function save() {
+function saved() {
 
     var name = document.getElementById("name").value
     var phone = document.getElementById("phone").value
