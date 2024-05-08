@@ -18,7 +18,7 @@
             background-color: rgba(110, 151, 175, 0.699);
         }
 
-        .pannel_details{
+        .pannel_details {
             width: 30%;
         }
 
@@ -96,7 +96,6 @@
         <div class="amount position-absolute top-0 d-flex justify-content-center align-items-center">
             <div class="bg-white pe-5 pt-3 pb-1 ps-5 rounded-4 pannel_details">
                 <h4 class="text-center text-decoration-underline opacity-75">Details</h4>
-
                 <div>
                     <div class="row">
                         <div class="col-md-6 mb-2">
@@ -110,7 +109,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-2">
-                            <label>Phonr no.:</label>
+                            <label>Phone no.:</label>
                             <h6 class="form-control">phone</h6>
                         </div>
                         <div class="col-md-6 mb-2">
@@ -124,8 +123,17 @@
 
                 <h4 class="text-center text-decoration-underline opacity-75">Add Money</h4>
                 <form class="mb-3">
-                    <label>Amount<span>*</span></label>
-                    <input type="text" class="form-control" placeholder="Enter Amount">
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <label>Amount<span>*</span></label>
+                            <input type="text" class="form-control" placeholder="Enter Amount">
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <label>Date<span>*</span></label>
+                            <input type="date" class="form-control" placeholder="Enter Amount">
+                        </div>
+                    </div>
+
                     <div class="text-center">
                         <button class="btn btn-primary mt-2 me-1">Add</button>
                         <button class="btn btn-primary mt-2">Close</button>
@@ -133,7 +141,6 @@
                 </form>
             </div>
         </div>
-    </div>
     </div>
 
     <div id="record_output">
