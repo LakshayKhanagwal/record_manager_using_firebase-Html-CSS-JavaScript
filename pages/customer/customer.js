@@ -176,6 +176,7 @@ function Table(name, phone, account) {
 
     var button_view_record = document.createElement("button")
     button_view_record.className = "btn btn-warning"
+    button_view_record.setAttribute("onclick","add_money()")
     button_view_record.innerHTML = "View Record"
 
     cell_button.append(button_view_record)

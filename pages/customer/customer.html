@@ -14,8 +14,12 @@
             width: 100%;
         }
 
-        .details_bg{
-background-color: rgba(110, 151, 175, 0.699);
+        .details_bg {
+            background-color: rgba(110, 151, 175, 0.699);
+        }
+
+        .pannel_details{
+            width: 30%;
         }
 
         /* Apply styles only for screens smaller than 600px wide */
@@ -84,11 +88,52 @@ background-color: rgba(110, 151, 175, 0.699);
             </div>
             <div class="pt-3 d-flex align-content-center justify-content-center">
                 <button type="button" onclick="Add_customer()" class="btn btn-primary m-1">Add Customer</button>
-                <button type="button" onclick="add_money()" class="btn btn-primary m-1">Existing Customer</button>
+                <!-- <button type="button" onclick="add_money()" class="btn btn-primary m-1">Existing Customer</button> -->
             </div>
         </form>
     </div>
-    <div id="money"></div>
+    <div id="money">
+        <div class="amount position-absolute top-0 d-flex justify-content-center align-items-center">
+            <div class="bg-white pe-5 pt-3 pb-1 ps-5 rounded-4 pannel_details">
+                <h4 class="text-center text-decoration-underline opacity-75">Details</h4>
+
+                <div>
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <label>Sender:</label>
+                            <h6 class="form-control">sender</h6>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <label>Reciver:</label>
+                            <h6 class="form-control">reciver</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <label>Phonr no.:</label>
+                            <h6 class="form-control">phone</h6>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <label>Bank:</label>
+                            <h6 class="form-control">bank</h6>
+                        </div>
+                    </div>
+                    <label>Account No.:</label>
+                    <h6 class="form-control">acc.no.</h6>
+                </div>
+
+                <h4 class="text-center text-decoration-underline opacity-75">Add Money</h4>
+                <form class="mb-3">
+                    <label>Amount<span>*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter Amount">
+                    <div class="text-center">
+                        <button class="btn btn-primary mt-2 me-1">Add</button>
+                        <button class="btn btn-primary mt-2">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     </div>
 
     <div id="record_output">
