@@ -72,6 +72,7 @@ function saved() {
     show()
 }
 
+show()
 function show() {
     var username = localStorage.getItem("u_name")
 
@@ -262,6 +263,7 @@ function edit(edit_button) {
 
         document.getElementById("save").style.display = "none"
         document.getElementById("update").style.display = "inline"
+        document.getElementById("cancel").style.display = "inline"
         document.getElementById("update").setAttribute("name", edit_button.name)
     })
 }
@@ -291,7 +293,7 @@ function Update(keys) {
             if (err) {
                 alert("Error Occured")
             } else {
-                alert("Data Saved Successfully")
+                alert("Data Updated Successfully")
                 document.getElementById("name").value = ""
                 document.getElementById("phone").value = ""
                 document.getElementById("form-name").value = ""
@@ -302,6 +304,7 @@ function Update(keys) {
                 
                 document.getElementById("save").style.display = "inline"
                 document.getElementById("update").style.display = "none"
+                document.getElementById("cancel").style.display = "none"
             }
         })
     } else {

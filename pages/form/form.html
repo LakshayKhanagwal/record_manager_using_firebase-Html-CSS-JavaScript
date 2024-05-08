@@ -25,6 +25,10 @@
             display: none;
         }
 
+        #cancel{
+            display: none;
+        }
+
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
             -webkit-appearance: none;
@@ -92,14 +96,15 @@
             </div>
             <div class="div-button">
                 <button type="button" onclick="Update(this)" id="update" class="btn btn-primary">Update</button>
+                <button id="cancel" class="btn btn-primary m-1">Cancel</button>
                 <button type="button" onclick="saved()" id="save" class="btn btn-primary">Save</button>
-                <button type="button" onclick="show()" class="btn btn-primary m-1">Show</button>
             </div>
         </form>
     </div>
 
     <div id="record" class="overflow-x-hidden mb-3">
-        <div class="row mt-5 gap-3 d-flex justify-content-center" id="record_cards">
+        <h1 class="text-center text-decoration-underline mt-3">Form Records</h1>
+        <div class="row mt-3 gap-3 d-flex justify-content-center" id="record_cards">
         </div>
     </div>
 
