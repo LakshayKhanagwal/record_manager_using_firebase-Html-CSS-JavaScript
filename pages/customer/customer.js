@@ -145,7 +145,7 @@ function show() {
 
 function Table(name, phone, account) {
     var div_record = document.createElement("div")
-    div_record.className = "border border-1 container col-11 rounded-2 d-flex justify-content-between align-items-center pt-3 ps-4 pe-4 mb-1 bg-body-secondary"
+    div_record.className = "border border-1 container col-11 rounded-2 d-flex justify-content-between align-items-center pt-3 ps-4 pe-4 mb-1 details_bg"
 
     var table_record = document.createElement("table")
     table_record.className = "table table-striped-columns w-100 rounded-5"
@@ -158,17 +158,17 @@ function Table(name, phone, account) {
 
     var cell_name = document.createElement("td")
     cell_name.className = "w-25 align-content-center"
-    cell_name.innerHTML = `Name:${name}`
+    cell_name.innerHTML = `Name:&nbsp;${name}`
     row.append(cell_name)
 
     var cell_phone = document.createElement("td")
     cell_phone.className = "w-25 align-content-center"
-    cell_phone.innerHTML = `Phone:${phone}`
+    cell_phone.innerHTML = `Phone:&nbsp;${phone}`
     row.append(cell_phone)
 
     var cell_account = document.createElement("td")
     cell_account.className = "w-25 align-content-center"
-    cell_account.innerHTML = `Account:${account}`
+    cell_account.innerHTML = `Account:&nbsp;${account}`
     row.append(cell_account)
 
     var cell_button = document.createElement("td")
